@@ -131,13 +131,9 @@ class ProgramlDevmapDataset(InMemoryDataset):
         if not os.path.exists(temp_dest_path):
             os.mkdir(temp_dest_path)
 
-        try:
-            # Extract contents to temporal file
-            with zipfile.ZipFile(llvm_ir_zip_path, "r") as zip:
-                zip.extractall(temp_dest_path)
-
-        except Exception as error:
-            print(error)
+        # Extract contents to temporal file
+        with zipfile.ZipFile(llvm_ir_zip_path, "r") as zip:
+            zip.extractall(temp_dest_path)
 
     def __name2ncc_path(self, name: str, src_dir: str, extension: str):
         """Resolve a NCC data archive path from a kernel name."""
